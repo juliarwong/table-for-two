@@ -41,53 +41,6 @@ function App() {
 
 export default App;
 
-
-
-
-// const App = () => {
-//   const [businesses, setBusinesses] = useState([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(
-//           'https://proxy.junocollege.com/ https://api.yelp.com/v3/categories',
-//           {
-//             headers: {
-//               Authorization: 'Bearer 5-p-LWD5Yk5hoDqXSEZ0ysvtzxvM2OdMgkjt-itYb98PfN6ja_M4VRjtO6G0bM8SscNypvSIdQ7EowKRkVnWHuNRQRIfftwNPaghazmR0dnUxSRpStq7U5S5bYNmZHYx',
-//             },
-//           }
-//         );
-
-//         setBusinesses(response.data);
-//         console.log(response.data);
-//       } catch (error) {
-//         console.error('Error fetching data from Yelp API:', error);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>Business Information</h1>
-//       {businesses && (
-//         <div>
-//           <h2>{businesses.name}</h2>
-//           <p>Rating: {businesses.rating}</p>
-//           <p>Phone: {businesses.phone}</p>
-//           <p>Address: {businesses.location?.address1}, {businesses.location?.city}</p>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default App;
-
-
-
 // 
 // Table for Two App
 // 1. Create landing page with the app heading Find a date spot in Toronto
