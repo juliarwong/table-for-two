@@ -1,6 +1,10 @@
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import React, { useEffect } from "react";
+import Header from "./Header";
+import Form from "./Form";
+import Restaurants from "./Restaurants";
+import "./App.css";
 
 function App() {
   const fetchRestaurants = async () => {
@@ -34,7 +38,9 @@ function App() {
 
   return (
     <main className="wrapper">
-      <h1>Table for Two!</h1>
+      <Header />
+      <Form />
+      <Restaurants />
     </main>
   );
 }
