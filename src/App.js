@@ -34,7 +34,7 @@ function App() {
 
   return (
     <main className="wrapper">
-      <h1>Table for Two</h1>
+      <h1>Table for Two!</h1>
     </main>
   );
 }
