@@ -7,10 +7,10 @@ import Restaurants from "./Restaurants";
 import "./App.css";
 
 function App() {
-  const fetchRestaurants = async () => {
+  const fetchRestaurants = async (city) => {
     const url = new URL("https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search");
     const params = new URLSearchParams({
-      location: "toronto",
+      location: "city",
       term: "restaurants"
     });
 
@@ -39,7 +39,7 @@ function App() {
   return (
     <main className="wrapper">
       <Header />
-      <Form />
+      <Form onSubmit={fetchRestaurants} />
       <Restaurants />
     </main>
   );
