@@ -1,24 +1,28 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-const Form = ({ onSubmit }) => {
-    const [userInput, setUserInput] = useState("");
+function Form({ onSubmit }) {
+    const [location, setLocation] = useState('');
+
+    const handleLocationChange = (event) => {
+        setLocation(event.target.value);
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSubmit(userInput);
+        onSubmit(location);
     };
-
-    const handleChange = (event) => {
-        setUserInput(event.target.value);
-    }
 
     return (
         <form onSubmit={handleSubmit}>
-        <label htmlFor="city">Enter a city:</label>
-        <input type="text" id="city" onChange={handleChange} value={userInput} />
-        <button>Submit</button>
+        <input
+            type="text"
+            placeholder="Enter location"
+            value={location}
+            onChange={handleLocationChange}
+        />
+        <button type="submit">Search</button>
         </form>
     );
-};
+}
 
 export default Form;

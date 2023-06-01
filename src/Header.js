@@ -1,9 +1,12 @@
-const Header = () => {
+import React from 'react';
+
+function Header() {
     return (
         <header>
-            <h1>Find a date spot</h1>
+        <h1>Table for Two</h1>
+        <p>Find a date spot</p>
         </header>
-    )
+    );
 }
 
 export default Header;
