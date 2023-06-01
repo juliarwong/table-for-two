@@ -5,39 +5,33 @@ import Restaurants from './Restaurants';
 import './styles.css';
 
 function App() {
-  // State to store the user input for location and fetched restaurant data
   const [location, setLocation] = useState('');
   const [restaurantData, setRestaurantData] = useState([]);
 
   useEffect(() => {
-    // Function to fetch restaurant data based on the selected location
     const fetchData = async () => {
-      // Set up the request options including headers
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer 5-p-LWD5Yk5hoDqXSEZ0ysvtzxvM2OdMgkjt-itYb98PfN6ja_M4VRjtO6G0bM8SscNypvSIdQ7EowKRkVnWHuNRQRIfftwNPaghazmR0dnUxSRpStq7U5S5bYNmZHYx'
-        }
-      };
+      const url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search`;
+      const apiKey = 'Bearer 5-p-LWD5Yk5hoDqXSEZ0ysvtzxvM2OdMgkjt-itYb98PfN6ja_M4VRjtO6G0bM8SscNypvSIdQ7EowKRkVnWHuNRQRIfftwNPaghazmR0dnUxSRpStq7U5S5bYNmZHYx';
+
+      const params = new URLSearchParams({
+        location: location,
+        sort_by: 'best_match',
+        limit: '20',
+        api_key: apiKey
+      });
 
       try {
-        // Make the API call and get the response
-        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${location}&sort_by=best_match&limit=20`, options);
+        const response = await fetch(`${url}?${params.toString()}`);
         const data = await response.json();
-        
-        // Update the restaurant data state with the fetched data
         setRestaurantData(data.businesses);
       } catch (error) {
         console.error("Error:", error);
       }
     };
 
-    // Call the fetchData function when the location changes
     fetchData();
   }, [location]);
 
-  // Function to handle form submission and update the location state
   const handleFormSubmit = (inputLocation) => {
     setLocation(inputLocation);
   };
@@ -45,16 +39,13 @@ function App() {
   return (
     <main className="wrapper">
       <Header />
-      {/* Pass the handleFormSubmit function as a prop */}
       <Form onSubmit={handleFormSubmit} />
-      {/* Pass the fetched restaurant data as a prop */}
-      <Restaurants restaurants={restaurantData} />
+      <Restaurants restaurants={''} />
     </main>
   );
 }
 
 export default App;
-
 
 // 
 // Table for Two App
