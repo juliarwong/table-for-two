@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 function Form({ onSubmit }) {
     const [location, setLocation] = useState('');
 
-    const handleLocationChange = (event) => {
-        setLocation(event.target.value);
-    };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         onSubmit(location);
+    };
+
+    const handleLocationChange = (event) => {
+        setLocation(event.target.value);
     };
 
     return (
