@@ -34,6 +34,11 @@ header p {
     font-size: 20px;
 }
 
+p {
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+}
+
 h2 {
     font-family: 'Prata', serif;
 }

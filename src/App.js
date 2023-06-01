@@ -5,7 +5,7 @@ import Restaurants from './Restaurants';
 import './styles.css';
 
 function App() {
-  const [location, setLocation] = useState('');
+  const [city, setCity] = useState('');
   const [restaurantData, setRestaurantData] = useState([]);
 
   useEffect(() => {
@@ -14,14 +14,18 @@ function App() {
       const apiKey = 'Bearer 5-p-LWD5Yk5hoDqXSEZ0ysvtzxvM2OdMgkjt-itYb98PfN6ja_M4VRjtO6G0bM8SscNypvSIdQ7EowKRkVnWHuNRQRIfftwNPaghazmR0dnUxSRpStq7U5S5bYNmZHYx';
 
       const params = new URLSearchParams({
-        location: location,
+        term: 'restaurants',
+        location: 'Toronto',
         sort_by: 'best_match',
-        limit: '20',
-        api_key: apiKey
+        limit: '10',
       });
 
       try {
-        const response = await fetch(`${url}?${params.toString()}`);
+        const response = await fetch(`${url}?${params.toString()}`, {
+          headers: {
+            Authorization: apiKey,
+          },
+        });
         const data = await response.json();
         setRestaurantData(data.businesses);
       } catch (error) {
@@ -29,23 +33,74 @@ function App() {
       }
     };
 
+    // Fetch top restaurants worldwide on page load
     fetchData();
-  }, [location]);
+  }, []);
 
-  const handleFormSubmit = (inputLocation) => {
-    setLocation(inputLocation);
+  const handleFormSubmit = (inputCity) => {
+    setCity(inputCity);
   };
 
   return (
     <main className="wrapper">
       <Header />
       <Form onSubmit={handleFormSubmit} />
-      <Restaurants restaurants={''} />
+      <Restaurants restaurants={restaurantData} />
     </main>
   );
 }
 
 export default App;
+
+
+// import React, { useState, useEffect } from 'react';
+// import Header from './Header';
+// import Form from './Form';
+// import Restaurants from './Restaurants';
+// import './styles.css';
+
+// function App() {
+//   const [location, setLocation] = useState('');
+//   const [restaurantData, setRestaurantData] = useState([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search`;
+//       const apiKey = 'Bearer 5-p-LWD5Yk5hoDqXSEZ0ysvtzxvM2OdMgkjt-itYb98PfN6ja_M4VRjtO6G0bM8SscNypvSIdQ7EowKRkVnWHuNRQRIfftwNPaghazmR0dnUxSRpStq7U5S5bYNmZHYx';
+
+//       const params = new URLSearchParams({
+//         location: location,
+//         sort_by: 'best_match',
+//         limit: '20',
+//         api_key: apiKey
+//       });
+
+//       try {
+//         const response = await fetch(`${url}?${params.toString()}`);
+//         const data = await response.json();
+//         setRestaurantData(data.businesses);
+//       } catch (error) {
+//         console.error("Error:", error);
+//       }
+//     };
+
+//     fetchData();
+//   }, [location]);
+
+//   const handleFormSubmit = (inputLocation) => {
+//     setLocation(inputLocation);
+//   };
+
+//   return (
+//     <main className="wrapper">
+//       <Header />
+//       <Form onSubmit={handleFormSubmit} />
+//       <Restaurants restaurants={''} />
+//     </main>
+//   );
+// }
+
+// export default App;
 
 // 
 // Table for Two App
