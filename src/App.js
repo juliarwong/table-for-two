@@ -6,10 +6,11 @@ import './styles.css';
 
 function App() {
   const [restaurantData, setRestaurantData] = useState([]);
+  const [inputCity, setInputCity] = useState('');
 
   const handleFormSubmit = async (inputCity) => {
     try {
-      const queryURL = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
+      const queryURL = 'https://proxy.junocollege.com/https://api.yelp.com/v3/businesses/search';
       const apiKey = 'Bearer 5-p-LWD5Yk5hoDqXSEZ0ysvtzxvM2OdMgkjt-itYb98PfN6ja_M4VRjtO6G0bM8SscNypvSIdQ7EowKRkVnWHuNRQRIfftwNPaghazmR0dnUxSRpStq7U5S5bYNmZHYx';
 
       const response = await fetch(`${queryURL}?term=restaurants&location=${inputCity}&sort_by=best_match&limit=10`, {
@@ -27,6 +28,7 @@ function App() {
 
       const data = await response.json();
       setRestaurantData(data.businesses);
+      setInputCity(inputCity);
     } catch (error) {
       console.error('Error:', error);
       setRestaurantData([]);
@@ -37,7 +39,7 @@ function App() {
     <main className="wrapper">
       <Header />
       <Form onSubmit={handleFormSubmit} />
-      <Restaurants restaurants={restaurantData} />
+      <Restaurants restaurants={restaurantData} inputCity={inputCity} />
     </main>
   );
 }
