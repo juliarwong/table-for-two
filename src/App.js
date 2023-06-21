@@ -5,6 +5,8 @@ import Restaurants from './Restaurants';
 import Footer from './Footer';
 import './styles.css';
 
+import React, { useEffect } from "react";
+
 function App() {
   const [restaurantData, setRestaurantData] = useState([]);
   const [inputCity, setInputCity] = useState('');
