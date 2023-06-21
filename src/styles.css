@@ -39,7 +39,7 @@ p {
     text-align: center;
 }
 
-h2 {
+h2, h3 {
     font-family: 'Prata', serif;
 }
 
@@ -76,4 +76,6 @@ button:hover {
     background-color: #fff;
     color: #000;
 }
+
+/* media queries */
 
