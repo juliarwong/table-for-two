@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Form from './Form';
 import Restaurants from './Restaurants';
-import Footer from './Footer';
 import './styles.css';
-
-import React, { useEffect } from "react";
 
 function App() {
   const [restaurantData, setRestaurantData] = useState([]);
@@ -43,7 +40,6 @@ function App() {
       <Header />
       <Form onSubmit={handleFormSubmit} />
       <Restaurants restaurants={restaurantData} inputCity={inputCity} />
-      <Footer />
     </main>
   );
 }
