@@ -39,8 +39,14 @@ p {
     text-align: center;
 }
 
-h2, h3 {
+h2 {
     font-family: 'Prata', serif;
+}
+
+h3 {
+    font-family: 'Prata', serif;
+    text-align: center;
+    margin-top: 50px;
 }
 
 /* Form */
@@ -77,5 +83,24 @@ button:hover {
     color: #000;
 }
 
-/* media queries */
 
+/* media queries */
+@media (max-width: 767px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+    }
+
+    button {
+        padding: 8px 16px;
+    }
+}
