@@ -4,6 +4,8 @@ import Form from './Form';
 import Restaurants from './Restaurants';
 import './styles.css';
 
+import React, { useEffect } from "react";
+
 function App() {
   const [restaurantData, setRestaurantData] = useState([]);
   const [inputCity, setInputCity] = useState('');
